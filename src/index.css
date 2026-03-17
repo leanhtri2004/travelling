@@ -1,0 +1,155 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .bg-atmosphere {
+    background-image:
+      radial-gradient(circle at 12% 20%, rgba(13, 166, 242, 0.18), transparent 45%),
+      radial-gradient(circle at 78% 18%, rgba(245, 158, 11, 0.2), transparent 40%),
+      radial-gradient(circle at 40% 85%, rgba(16, 185, 129, 0.15), transparent 50%),
+      linear-gradient(135deg, #f5f7f8 0%, #f0f6ff 45%, #fff5e6 100%);
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    backdrop-filter: blur(14px);
+  }
+
+  .glow-ring {
+    box-shadow: 0 0 0 1px rgba(13, 166, 242, 0.15), 0 12px 30px rgba(13, 166, 242, 0.18);
+  }
+
+  .soft-float {
+    animation: soft-float 8s ease-in-out infinite;
+  }
+
+  .fade-in-up {
+    animation: fade-in-up 0.6s ease-out both;
+  }
+
+  .float-slow {
+    animation: float-slow 10s ease-in-out infinite;
+  }
+
+  .gradient-move {
+    background-size: 200% 200%;
+    animation: gradient-move 10s ease infinite;
+  }
+
+  .sparkle {
+    animation: sparkle 6s ease-in-out infinite;
+  }
+
+  .stagger-1 {
+    animation-delay: 0.05s;
+  }
+  .stagger-2 {
+    animation-delay: 0.12s;
+  }
+  .stagger-3 {
+    animation-delay: 0.2s;
+  }
+}
+
+@keyframes soft-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes gradient-move {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes sparkle {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(0.95);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+}
+
+@layer components {
+  .badge {
+    @apply inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold;
+  }
+  .badge-success {
+    @apply bg-emerald-100 text-emerald-700;
+  }
+  .badge-warning {
+    @apply bg-amber-100 text-amber-700;
+  }
+  .badge-info {
+    @apply bg-sky-100 text-sky-700;
+  }
+  .badge-danger {
+    @apply bg-rose-100 text-rose-700;
+  }
+  .badge-neutral {
+    @apply bg-slate-100 text-slate-600;
+  }
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 47.4% 11.2%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 47.4% 11.2%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+  }
+
+  body {
+    font-family: "Inter", sans-serif;
+    background-color: #f5f7f8;
+  }
+
+  .material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  }
+}
