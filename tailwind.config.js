@@ -14,6 +14,16 @@ export default {
     },
     extend: {
       colors: {
+        brand: {
+          DEFAULT: "#0da6f2",
+          light: "#e6f6fe",
+          dark: "#0a84c1",
+        },
+        accent: {
+          sun: "#F59E0B",
+          ocean: "#0ea5e9",
+          sand: "#FDFCF7",
+        },
         primary: "#0da6f2",
         "accent-warm": "#f59e0b",
         "background-light": "#f5f7f8",
@@ -38,8 +48,11 @@ export default {
       },
       fontFamily: {
         display: ["Inter", "sans-serif"],
+        sans: ["Inter", "sans-serif"],
+        serif: ["Playfair Display", "serif"],
       },
       borderRadius: {
+        custom: "8px",
         lg: "0.5rem",
         xl: "0.75rem",
       },
