@@ -18,10 +18,10 @@ export default function HotelLayout({ children }) {
     { label: "Support", icon: "support", to: `/hotel/${hotel.id}/support` },
   ];
   return (
-    <div className="flex min-h-screen bg-background-light text-slate-900">
-      <aside className="w-64 bg-white border-r border-slate-200 flex flex-col fixed h-full">
+    <div className="flex min-h-screen hotel-shell text-slate-900">
+      <aside className="w-72 hotel-sidebar flex flex-col fixed h-full">
         <div className="p-6 flex items-center gap-3">
-          <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center text-white">
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-brand to-accent-ocean flex items-center justify-center text-white shadow-lg">
             <span className="material-symbols-outlined">tsunami</span>
           </div>
           <div>
@@ -38,11 +38,7 @@ export default function HotelLayout({ children }) {
               key={item.to}
               to={item.to}
               className={({ isActive }) =>
-                `flex items-center gap-3 px-6 py-3 text-sm font-medium ${
-                  isActive
-                    ? "bg-primary/10 text-primary border-r-4 border-primary"
-                    : "text-slate-600 hover:bg-slate-50"
-                }`
+                `hotel-navlink ${isActive ? "hotel-navlink-active" : ""}`
               }
             >
               <span className="material-symbols-outlined text-slate-400">{item.icon}</span>
@@ -50,8 +46,8 @@ export default function HotelLayout({ children }) {
             </NavLink>
           ))}
         </nav>
-        <div className="p-4 border-t border-slate-200">
-          <div className="flex items-center gap-3 p-2">
+        <div className="p-4 border-t border-slate-200/70">
+          <div className="flex items-center gap-3 p-2 rounded-xl bg-white/70 border border-white/60 shadow-sm">
             <div
               className="w-10 h-10 rounded-full bg-slate-200 bg-cover bg-center"
               style={{
@@ -66,26 +62,14 @@ export default function HotelLayout({ children }) {
           </div>
         </div>
       </aside>
-      <main className="ml-64 flex-1 min-h-screen">
-        <header className="sticky top-0 z-10 bg-white/80 backdrop-blur-md border-b border-slate-200 px-8 py-4 flex justify-between items-center">
-          <div className="flex items-center gap-4 flex-1">
-            <div className="relative w-full max-w-md">
-              <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg">
-                search
-              </span>
-              <input
-                className="w-full pl-10 pr-4 py-2 bg-slate-100 border-none rounded-lg focus:ring-2 focus:ring-primary text-sm"
-                placeholder="Search bookings, guests, or rooms..."
-                type="text"
-              />
-            </div>
-          </div>
+      <main className="ml-72 flex-1 min-h-screen">
+        <header className="sticky top-0 z-10 hotel-topbar px-8 py-4 flex justify-end items-center">
           <div className="flex items-center gap-4">
-            <button className="p-2 text-slate-500 hover:bg-slate-100 rounded-lg relative">
+            <button className="p-2 text-slate-500 hover:bg-white/70 rounded-lg relative">
               <span className="material-symbols-outlined">notifications</span>
               <span className="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full" />
             </button>
-            <button className="p-2 text-slate-500 hover:bg-slate-100 rounded-lg">
+            <button className="p-2 text-slate-500 hover:bg-white/70 rounded-lg">
               <span className="material-symbols-outlined">settings</span>
             </button>
           </div>

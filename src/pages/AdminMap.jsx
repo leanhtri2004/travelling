@@ -26,6 +26,9 @@ export default function AdminMap() {
         </div>
         <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
           <h3 className="text-lg font-bold mb-4">Hotels</h3>
+          <div className="mb-4 rounded-xl border border-slate-200 p-3 bg-slate-50/70 text-sm text-slate-600">
+            Select a hotel to update location or view details.
+          </div>
           <div className="space-y-3">
             {hotels.map((hotel) => (
               <div key={hotel.id} className="flex items-center justify-between">

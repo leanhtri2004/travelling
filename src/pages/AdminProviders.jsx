@@ -9,6 +9,18 @@ export default function AdminProviders() {
   return (
     <AdminLayout>
       <PageHeader title="Providers" subtitle="Hotels, transport, and hotel-managed tours." />
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {[
+          { label: "Active Providers", value: "1,230" },
+          { label: "Pending Reviews", value: "45" },
+          { label: "New This Week", value: "38" },
+        ].map((stat) => (
+          <div key={stat.label} className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+            <p className="text-xs text-slate-500 uppercase">{stat.label}</p>
+            <p className="text-2xl font-bold mt-2">{stat.value}</p>
+          </div>
+        ))}
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {[
           { name: "Ocean Blue Resort", type: "Hotel", status: "Active" },

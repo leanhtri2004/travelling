@@ -11,6 +11,23 @@ export default function TravelerBookings() {
   return (
     <TravelerLayout>
       <PageHeader title="Bookings" subtitle="Track all your hotel, tour, and transport reservations." />
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {[
+          { label: "Active Bookings", value: "5", icon: "event_available" },
+          { label: "Upcoming Trips", value: "2", icon: "calendar_today" },
+          { label: "Pending Payments", value: "$93", icon: "payments" },
+        ].map((stat) => (
+          <div key={stat.label} className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-xs text-slate-500 uppercase">{stat.label}</p>
+                <p className="text-2xl font-bold mt-2">{stat.value}</p>
+              </div>
+              <span className="material-symbols-outlined text-primary">{stat.icon}</span>
+            </div>
+          </div>
+        ))}
+      </div>
       <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
         <table className="w-full text-sm">
           <thead className="bg-slate-50 text-slate-500">
@@ -19,6 +36,7 @@ export default function TravelerBookings() {
               <th className="text-left p-4 font-semibold">Date</th>
               <th className="text-left p-4 font-semibold">Status</th>
               <th className="text-left p-4 font-semibold">Amount</th>
+              <th className="text-left p-4 font-semibold">Action</th>
             </tr>
           </thead>
           <tbody>
@@ -35,6 +53,11 @@ export default function TravelerBookings() {
                   <span className={statusClass[row[2]] || "badge badge-neutral"}>{row[2]}</span>
                 </td>
                 <td className="p-4 font-semibold">{row[3]}</td>
+                <td className="p-4">
+                  <button className="px-3 py-1.5 bg-slate-100 rounded-lg text-xs font-semibold">
+                    View
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>

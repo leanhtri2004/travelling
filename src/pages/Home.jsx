@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 
 const roleData = {
   traveler: {
@@ -23,7 +24,34 @@ const roleData = {
 
 export default function Home() {
   const [role, setRole] = useState("traveler");
+  const [openMenu, setOpenMenu] = useState(null);
+  const menuRef = useRef(null);
   const active = roleData[role];
+
+  const handleScroll = (targetId) => {
+    const section = document.getElementById(targetId);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth", block: "start" });
+      setOpenMenu(null);
+    }
+  };
+
+  useEffect(() => {
+    const handleClick = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setOpenMenu(null);
+      }
+    };
+    const handleEscape = (event) => {
+      if (event.key === "Escape") setOpenMenu(null);
+    };
+    document.addEventListener("mousedown", handleClick);
+    document.addEventListener("keydown", handleEscape);
+    return () => {
+      document.removeEventListener("mousedown", handleClick);
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, []);
 
   useEffect(() => {
     const elements = document.querySelectorAll("[data-reveal]");
@@ -47,7 +75,7 @@ export default function Home() {
 
   return (
     <div className="font-sans text-slate-800 bg-accent-sand leading-relaxed antialiased">
-      <nav className="fixed top-0 w-full z-50 glass-effect border-b border-white/20">
+      <nav className="fixed top-0 w-full z-50 glass-effect border-b border-white/20" ref={menuRef}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-20 items-center">
             <div className="flex items-center gap-3">
@@ -58,19 +86,116 @@ export default function Home() {
                 SmartTravel AI
               </span>
             </div>
-            <div className="hidden md:flex items-center space-x-10 font-medium text-slate-600">
-              <a className="hover:text-brand transition-colors text-sm uppercase tracking-wider font-semibold" href="#">
-                Destinations
-              </a>
-              <a className="hover:text-brand transition-colors text-sm uppercase tracking-wider font-semibold" href="#">
-                How it Works
-              </a>
-              <a className="hover:text-brand transition-colors text-sm uppercase tracking-wider font-semibold" href="#">
-                Pricing
-              </a>
-              <button className="bg-slate-900 text-white px-7 py-3 rounded-full font-bold hover:bg-brand transition-all shadow-md hover:shadow-brand/20">
-                Get Started
-              </button>
+            <div className="hidden md:flex items-center space-x-8 font-medium text-slate-600 relative">
+              {[
+                {
+                  key: "destinations",
+                  label: "Destinations",
+                  desc: "Curated regions and signature experiences.",
+                  target: "destinations",
+                  items: [
+                    { title: "Da Nang Coastal", sub: "Golden Bridge, My Khe, Son Tra", target: "destinations" },
+                    { title: "Hoi An Ancient", sub: "Lantern nights, riverside dining", target: "destinations" },
+                    { title: "Ha Noi Cultural", sub: "Old Quarter, museums, street food", target: "destinations" },
+                  ],
+                  image:
+                    "https://lh3.googleusercontent.com/aida-public/AB6AXuDeJ2OCqcCK9qdfRA73S7UQPwXtBXrfjo2qz9YHT6r__gu2dI8gn_qAAAj83UPvWpQuJ_9q7qfBvEVz-AE8OEXleDIG2may1NyQDHAAI6ChaP-7UhL0Kt4uLIpG5GFv0oEV2h7iSR2ZBqOsaKN12KbeT9_tZSvDOKkNHd60-S0wOLl-PshONupAW4YWy7j7Je7PnrVkw3Gc4Urx9bIX1g3nt3HahlKAmHwVT-zPwCb-bjJRCAU0PVALQWQHLhPHxYayJ3eOx78430ab",
+                },
+                {
+                  key: "how",
+                  label: "How it Works",
+                  desc: "From inspiration to a ready itinerary.",
+                  target: "how-it-works",
+                  items: [
+                    { title: "Tell Us Your Style", sub: "Budget, vibe, pace, must-sees", target: "how-it-works" },
+                    { title: "AI Orchestration", sub: "Optimize time, routes, and flows", target: "how-it-works" },
+                    { title: "Confirm & Go", sub: "Book stays, tours, and transport", target: "how-it-works" },
+                  ],
+                  image:
+                    "https://lh3.googleusercontent.com/aida-public/AB6AXuCM-MHR6WvZVNr2R5VeVa6Fx4I9R-m65idYgKq5spPS2a3iKlCey16FqCiXz4mQQe4QZGLHZuqJuSSXxiBCf6cho74DID_bRqvzmktD7KGBL3vHRHxnzfW76_BSF7MBxSWfwL1-FhjLe66nqInsGkUGAFrlCLLSr1Uar0hK08mpkxVt-PgrdBpe_1g1AK1FbriR7ADNUrv4vjs7ODHzSv5q3KSAp906KDuF7MK2CEFvtyp17-cmYjb3nysavzMnX5pIsbvecs5MEeu5",
+                },
+                {
+                  key: "about",
+                  label: "About Us",
+                  desc: "A travel studio blending AI with local expertise.",
+                  target: "about-us",
+                  items: [
+                    { title: "Our Story", sub: "Built in Vietnam for modern explorers", target: "about-us" },
+                    { title: "Local Partners", sub: "Guides, hosts, and artisans we trust", target: "about-us" },
+                    { title: "Sustainability", sub: "Travel that gives back to communities", target: "about-us" },
+                  ],
+                  image:
+                    "https://lh3.googleusercontent.com/aida-public/AB6AXuBaxJgUqpGSP8pdsG93LwBJaht8E3nP2j8rd_WkHE9zSXb6JIE_TcubMHxErMMMh5qnWcEmoTMmhDbncZKCazNwOq9B4lN49f13Nt4DjlMLp8xP4ssBHRsf5773_r5O2ibCGudxe0-G6O8ghXdcTP7VWvz0dJgnLGzgWfvATHIY68vk3R591ASNEWghmxhWMXT9mx5KviUK2Y8bM1wnVXTc-xvny6HA9osEIbV2vAV854UCAN1GwL_jJbUVCBHC2n6ajJ_7lGYCjthZ",
+                },
+              ].map((menu) => (
+                <div
+                  key={menu.key}
+                  className="relative"
+                  onMouseEnter={() => setOpenMenu(menu.key)}
+                  onMouseLeave={() => setOpenMenu(null)}
+                >
+                  <button
+                    className={`hover:text-brand transition-colors text-sm uppercase tracking-wider font-semibold ${
+                      openMenu === menu.key ? "text-brand" : ""
+                    }`}
+                    onClick={() => handleScroll(menu.target)}
+                    type="button"
+                  >
+                    {menu.label}
+                  </button>
+                  {openMenu === menu.key && (
+                    <div className="absolute left-0 top-full mt-4 w-[520px] rounded-3xl bg-white/95 backdrop-blur-xl border border-white/40 shadow-2xl p-6 menu-panel">
+                      <div className="grid grid-cols-[1.2fr_1fr] gap-6">
+                        <div>
+                          <p className="text-xs uppercase tracking-[0.3em] text-brand font-bold mb-2">
+                            {menu.label}
+                          </p>
+                          <h4 className="text-xl font-bold text-slate-900 mb-2">{menu.desc}</h4>
+                          <div className="space-y-3 mt-4">
+                            {menu.items.map((item) => (
+                              <button
+                                key={item.title}
+                                type="button"
+                                onClick={() => handleScroll(item.target)}
+                                className="w-full text-left rounded-2xl border border-slate-100 bg-slate-50/70 px-4 py-3 hover:border-brand/30 hover:bg-white transition"
+                              >
+                                <p className="text-sm font-semibold text-slate-900">{item.title}</p>
+                                <p className="text-xs text-slate-500">{item.sub}</p>
+                              </button>
+                            ))}
+                          </div>
+                        </div>
+                        <div className="relative overflow-hidden rounded-2xl">
+                          <img
+                            alt={menu.label}
+                            className="h-full w-full object-cover"
+                            src={menu.image}
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-transparent to-transparent"></div>
+                          <div className="absolute bottom-4 left-4 text-white">
+                            <p className="text-xs uppercase tracking-[0.3em] text-white/70">
+                              Featured
+                            </p>
+                            <p className="text-base font-semibold">{menu.label}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ))}
+              <Link
+                to="/auth/login"
+                className="px-4 py-2 rounded-full text-sm font-bold text-slate-700 hover:text-brand transition-colors"
+              >
+                Login
+              </Link>
+              <Link
+                to="/auth/register"
+                className="px-5 py-2.5 rounded-full text-sm font-bold bg-slate-900 text-white hover:bg-brand transition-all shadow-md hover:shadow-brand/20"
+              >
+                Sign Up
+              </Link>
             </div>
           </div>
         </div>
@@ -78,11 +203,36 @@ export default function Home() {
 
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img
-            alt="Golden Bridge Da Nang Vietnam"
-            className="w-full h-full object-cover scale-105"
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUJjfb9mcI6-0WWxl3xi4Oxdyzz6wEjVxsZ8PW_wtWoNsEMM4ZjW40FKlqgVEmhIFhqV7Ttx8sibrdpmgF0nFizy_EsvgsWv6KdBya3p5MHudX9h-ayKLdEo2bqJ3eC-gBcIUiyIjbWzQiiqJHu3lyDrXkA_CrG7PcRPrRK4u4yr8RWCf3diBYrRxhypbYX7XN4fdQw0r4B2n9rqOlPgJhTyxx2_Hd7Okg08gmBqv4SqEF6ttGt4gObkXi_L19TMgyuBBycrxY23-p"
-          />
+          <video
+            className="absolute inset-0 w-full h-full object-cover hero-video hero-video-slide delay-1"
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster="https://lh3.googleusercontent.com/aida-public/AB6AXuDUJjfb9mcI6-0WWxl3xi4Oxdyzz6wEjVxsZ8PW_wtWoNsEMM4ZjW40FKlqgVEmhIFhqV7Ttx8sibrdpmgF0nFizy_EsvgsWv6KdBya3p5MHudX9h-ayKLdEo2bqJ3eC-gBcIUiyIjbWzQiiqJHu3lyDrXkA_CrG7PcRPrRK4u4yr8RWCf3diBYrRxhypbYX7XN4fdQw0r4B2n9rqOlPgJhTyxx2_Hd7Okg08gmBqv4SqEF6ttGt4gObkXi_L19TMgyuBBycrxY23-p"
+          >
+            <source src="https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4" type="video/mp4" />
+          </video>
+          <video
+            className="absolute inset-0 w-full h-full object-cover hero-video hero-video-slide delay-2"
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster="https://lh3.googleusercontent.com/aida-public/AB6AXuDeJ2OCqcCK9qdfRA73S7UQPwXtBXrfjo2qz9YHT6r__gu2dI8gn_qAAAj83UPvWpQuJ_9q7qfBvEVz-AE8OEXleDIG2may1NyQDHAAI6ChaP-7UhL0Kt4uLIpG5GFv0oEV2h7iSR2ZBqOsaKN12KbeT9_tZSvDOKkNHd60-S0wOLl-PshONupAW4YWy7j7Je7PnrVkw3Gc4Urx9bIX1g3nt3HahlKAmHwVT-zPwCb-bjJRCAU0PVALQWQHLhPHxYayJ3eOx78430ab"
+          >
+            <source src="https://storage.googleapis.com/coverr-main/mp4/Footboys.mp4" type="video/mp4" />
+          </video>
+          <video
+            className="absolute inset-0 w-full h-full object-cover hero-video hero-video-slide delay-3"
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster="https://lh3.googleusercontent.com/aida-public/AB6AXuAlNfHCMQQiHSrmsnjIenGYkj2PG6GN9FODyvRjY2H3dOauP_vcvKSj6_M7p4537AQn7l2hrdN47WKAhZ-ufTRywCtrq8WniAEube1CNJvoS_nIV2J1Mp7gDozUpyXDerMhqEXAXNX6vXg_RQLjbunWo8bTjC4WjIC2RkWF-J7N0HHjCIvmzbsGMrRoXMye31OCjL2wa1UbWhAYj7GNKpS_YjLxKvtX0WqDAX3_yJbDc4TaZH0Osm83pJecwW15QI98ZG7aGPM9hgyf"
+          >
+            <source src="https://storage.googleapis.com/coverr-main/mp4/Tropical_Beach.mp4" type="video/mp4" />
+          </video>
           <div className="absolute inset-0 hero-gradient"></div>
         </div>
         <div
@@ -200,7 +350,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="py-32 px-4 bg-white">
+        <section className="py-32 px-4 bg-white scroll-section" id="how-it-works">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-24 reveal" data-reveal>
               <h2 className="text-4xl md:text-5xl font-serif mb-4 text-slate-900">
@@ -339,7 +489,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="py-32 px-4 bg-white">
+        <section className="py-32 px-4 bg-white scroll-section" id="destinations">
           <div className="max-w-7xl mx-auto">
             <div
               className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8 reveal"
@@ -408,6 +558,67 @@ export default function Home() {
                   </div>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="py-32 px-4 bg-white scroll-section" id="about-us">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16 reveal" data-reveal>
+              <span className="text-brand font-bold tracking-[0.2em] text-sm uppercase mb-3 block">
+                About Us
+              </span>
+              <h2 className="text-4xl md:text-5xl font-serif mb-4 text-slate-900">
+                Crafted Journeys, Rooted in Vietnam
+              </h2>
+              <p className="text-slate-500 text-lg">
+                We blend intelligent planning with local insight to create meaningful travel across Vietnam.
+              </p>
+            </div>
+            <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
+              <div className="space-y-6 reveal" data-reveal>
+                <h3 className="text-3xl font-serif text-slate-900">
+                  A modern travel collective powered by AI and real people.
+                </h3>
+                <p className="text-slate-500 text-lg">
+                  SmartTravel AI was born from a love of Vietnam’s coastlines, mountains, and heritage towns.
+                  We partner with local guides, boutique hotels, and family-run experiences to help travelers
+                  go beyond the highlights.
+                </p>
+                <div className="grid sm:grid-cols-2 gap-6">
+                  {[
+                    {
+                      title: "Local-first network",
+                      desc: "Handpicked hosts and artisans in every region.",
+                    },
+                    {
+                      title: "Thoughtful itineraries",
+                      desc: "Balanced days with culture, rest, and discovery.",
+                    },
+                    {
+                      title: "Sustainable travel",
+                      desc: "Programs that support communities and protect nature.",
+                    },
+                    {
+                      title: "24/7 travel support",
+                      desc: "We’re with you before, during, and after each trip.",
+                    },
+                  ].map((item) => (
+                    <div key={item.title} className="rounded-2xl border border-slate-100 bg-slate-50/70 p-4">
+                      <p className="font-semibold text-slate-900 mb-1">{item.title}</p>
+                      <p className="text-sm text-slate-500">{item.desc}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="relative reveal reveal-delay-1" data-reveal>
+                <div className="absolute -inset-6 bg-gradient-to-br from-brand/20 to-accent-sun/20 rounded-[3rem] blur-2xl"></div>
+                <img
+                  alt="About SmartTravel AI"
+                  className="relative rounded-[2.5rem] shadow-2xl object-cover w-full h-[520px]"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDspHlwEelurKkkZYSdCL-ZTBvXsvo-wQ9RMKgOpmnv9NfHGiUd6dIeRYYI6f57rQR3vQANwByOyLkX13QPJULnOd86zDNFcVwD35tJ0J-lQqp_NZHw-8oAmE1ZkwiHx2ZQTFsF9nssMTK6mnh0ptnArhtKw9634SfuMyfeef200RZqgh97hLUHOYo9FSAuzQQDGksdAUeGQiftiLtlBGP1l-lrKXwmbpa-BjtoyqTb3ns4nfWvsvX9WiwrM0MKttj9DIBFk4yWMpcb"
+                />
+              </div>
             </div>
           </div>
         </section>

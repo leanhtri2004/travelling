@@ -5,16 +5,16 @@ export default function HotelSupport() {
   return (
     <HotelLayout>
       <PageHeader title="Support" subtitle="Contact platform support for provider issues." />
-      <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm max-w-xl">
+      <div className="hotel-card p-6 max-w-xl">
         <input
-          className="w-full px-4 py-2 border border-slate-200 rounded-lg text-sm mb-3"
+          className="w-full hotel-input text-sm mb-3"
           placeholder="Subject"
         />
         <textarea
-          className="w-full px-4 py-2 border border-slate-200 rounded-lg text-sm min-h-[120px] mb-3"
+          className="w-full hotel-input text-sm min-h-[120px] mb-3"
           placeholder="Describe the issue..."
         />
-        <button className="px-4 py-2 bg-primary text-white rounded-lg text-sm font-semibold">
+        <button className="px-4 py-2 hotel-button text-sm font-semibold">
           Send
         </button>
       </div>

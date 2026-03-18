@@ -1,6 +1,16 @@
 import TravelerLayout from "../layouts/TravelerLayout.jsx";
+import { hotels } from "../data/hotels.js";
 
 export default function TravelerAIPlan() {
+  const destination = "Da Nang";
+  const recommendedTours = hotels
+    .filter((hotel) => hotel.location === destination)
+    .flatMap((hotel) =>
+      hotel.tours.map((tour) => ({
+        ...tour,
+        hotel: hotel.name,
+      }))
+    );
   return (
     <TravelerLayout>
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
@@ -123,6 +133,33 @@ export default function TravelerAIPlan() {
             <div className="text-right">
               <p className="text-sm text-white/70">Estimated Budget</p>
               <p className="text-3xl font-black">$1,350</p>
+            </div>
+          </div>
+
+          <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+            <h3 className="text-lg font-bold flex items-center gap-2">
+              <span className="material-symbols-outlined text-primary">tour</span>
+              Recommended Tours for {destination}
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {recommendedTours.slice(0, 4).map((tour) => (
+                <div key={tour.name} className="p-4 rounded-xl bg-slate-50 border border-slate-200">
+                  <p className="text-sm font-semibold">{tour.name}</p>
+                  <p className="text-xs text-slate-500 mt-1">Hotel: {tour.hotel}</p>
+                  <p className="text-xs text-slate-500">Route: {tour.route}</p>
+                  <div className="mt-2 flex flex-wrap gap-2">
+                    {tour.highlights?.slice(0, 2).map((item) => (
+                      <span
+                        key={item}
+                        className="px-2.5 py-1 rounded-full bg-white text-[10px] font-semibold text-slate-600"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                  <button className="mt-3 text-primary text-xs font-bold">Add to Itinerary</button>
+                </div>
+              ))}
             </div>
           </div>
 

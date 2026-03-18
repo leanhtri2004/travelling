@@ -35,12 +35,31 @@ export default function AdminOverview() {
             Chart Placeholder
           </div>
         </div>
-        <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-          <h3 className="text-lg font-bold mb-4">Recent Activity</h3>
-          <div className="space-y-3 text-sm text-slate-600">
-            <p>New hotel provider submitted verification.</p>
-            <p>3 reviews flagged for moderation.</p>
-            <p>Payment dispute opened by user.</p>
+        <div className="space-y-6">
+          <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+            <h3 className="text-lg font-bold mb-4">Recent Activity</h3>
+            <div className="space-y-3 text-sm text-slate-600">
+              <p>New hotel provider submitted verification.</p>
+              <p>3 reviews flagged for moderation.</p>
+              <p>Payment dispute opened by user.</p>
+            </div>
+          </div>
+          <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+            <h3 className="text-lg font-bold mb-4">System Health</h3>
+            <div className="space-y-3 text-sm text-slate-600">
+              <div className="flex items-center justify-between">
+                <span>API Latency</span>
+                <span className="font-semibold text-emerald-600">Normal</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span>Payment Gateway</span>
+                <span className="font-semibold text-emerald-600">Operational</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span>SMS Provider</span>
+                <span className="font-semibold text-amber-600">Degraded</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>

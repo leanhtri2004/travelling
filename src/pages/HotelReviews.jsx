@@ -5,7 +5,7 @@ export default function HotelReviews() {
   return (
     <HotelLayout>
       <PageHeader title="Reviews" subtitle="Guest feedback and responses." />
-      <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-4">
+      <div className="hotel-card p-6 space-y-4">
         {[
           { name: "Anna Nguyen", comment: "Beautiful view and friendly staff." },
           { name: "Mark Lee", comment: "Great breakfast and clean rooms." },

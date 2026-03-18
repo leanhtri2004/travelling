@@ -7,13 +7,19 @@ export default function AdminNotifications() {
       <PageHeader title="Notifications" subtitle="System alerts and updates." />
       <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-3">
         {[
-          "New provider submission awaiting approval.",
-          "Spike in booking cancellations detected.",
-          "Payment gateway latency alert.",
+          { msg: "New provider submission awaiting approval.", tag: "Approvals" },
+          { msg: "Spike in booking cancellations detected.", tag: "Risk" },
+          { msg: "Payment gateway latency alert.", tag: "Payments" },
         ].map((note) => (
-          <div key={note} className="flex items-center gap-3">
+          <div key={note.msg} className="flex items-start gap-3">
             <span className="material-symbols-outlined text-primary">notifications</span>
-            <p className="text-sm text-slate-600">{note}</p>
+            <div className="flex-1">
+              <p className="text-sm text-slate-600">{note.msg}</p>
+              <span className="mt-2 inline-flex px-2 py-0.5 rounded-full bg-slate-100 text-[10px] font-semibold text-slate-500">
+                {note.tag}
+              </span>
+            </div>
+            <button className="text-xs font-bold text-primary">Mark read</button>
           </div>
         ))}
       </div>

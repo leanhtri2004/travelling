@@ -15,7 +15,7 @@ export default function HotelGuides() {
         subtitle="Manage internal guides, availability, and assignments."
         action={
           <button
-            className="px-4 py-2 bg-primary text-white rounded-lg text-sm font-semibold"
+            className="px-4 py-2 hotel-button text-sm font-semibold"
             onClick={() => setOpenCreate(true)}
           >
             Add Guide
@@ -23,7 +23,7 @@ export default function HotelGuides() {
         }
       />
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="lg:col-span-2 bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+        <div className="lg:col-span-2 hotel-card p-6">
           <h3 className="text-lg font-bold mb-4">Guide Roster</h3>
           <div className="space-y-3">
             {[
@@ -54,13 +54,13 @@ export default function HotelGuides() {
             ))}
           </div>
         </div>
-        <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+        <div className="hotel-card p-6">
           <h3 className="text-lg font-bold mb-4">Assignments</h3>
           <p className="text-sm text-slate-500 mb-4">
             Assign available guides to hotel tours.
           </p>
           <button
-            className="w-full px-4 py-2 bg-primary text-white rounded-lg text-sm font-semibold"
+            className="w-full px-4 py-2 hotel-button text-sm font-semibold"
             onClick={() => setOpenAssign(true)}
           >
             Assign Guide
@@ -75,20 +75,20 @@ export default function HotelGuides() {
         actions={
           <>
             <button
-              className="px-4 py-2 bg-slate-100 rounded-lg text-sm font-semibold"
+              className="px-4 py-2 hotel-button-ghost text-sm font-semibold"
               onClick={() => setOpenCreate(false)}
             >
               Cancel
             </button>
-            <button className="px-4 py-2 bg-primary text-white rounded-lg text-sm font-semibold">
+            <button className="px-4 py-2 hotel-button text-sm font-semibold">
               Save
             </button>
           </>
         }
       >
-        <input className="w-full px-4 py-2 border border-slate-200 rounded-lg text-sm" placeholder="Guide name" />
-        <input className="w-full px-4 py-2 border border-slate-200 rounded-lg text-sm" placeholder="Languages" />
-        <input className="w-full px-4 py-2 border border-slate-200 rounded-lg text-sm" placeholder="Rate" />
+        <input className="w-full hotel-input text-sm" placeholder="Guide name" />
+        <input className="w-full hotel-input text-sm" placeholder="Languages" />
+        <input className="w-full hotel-input text-sm" placeholder="Rate" />
       </Dialog>
 
       <Dialog
@@ -98,25 +98,25 @@ export default function HotelGuides() {
         actions={
           <>
             <button
-              className="px-4 py-2 bg-slate-100 rounded-lg text-sm font-semibold"
+              className="px-4 py-2 hotel-button-ghost text-sm font-semibold"
               onClick={() => setOpenAssign(false)}
             >
               Cancel
             </button>
-            <button className="px-4 py-2 bg-primary text-white rounded-lg text-sm font-semibold">
+            <button className="px-4 py-2 hotel-button text-sm font-semibold">
               Assign
             </button>
           </>
         }
       >
-        <input className="w-full px-4 py-2 border border-slate-200 rounded-lg text-sm" placeholder="Tour name" />
-        <select className="w-full px-4 py-2 border border-slate-200 rounded-lg text-sm">
+        <input className="w-full hotel-input text-sm" placeholder="Tour name" />
+        <select className="w-full hotel-input text-sm">
           <option>Select guide</option>
           <option>Le Minh Hoang</option>
           <option>Nguyen Thi Lan</option>
           <option>Tran Quang Huy</option>
         </select>
-        <input className="w-full px-4 py-2 border border-slate-200 rounded-lg text-sm" placeholder="Date & time" />
+        <input className="w-full hotel-input text-sm" placeholder="Date & time" />
       </Dialog>
 
       <Dialog
@@ -126,20 +126,20 @@ export default function HotelGuides() {
         actions={
           <>
             <button
-              className="px-4 py-2 bg-slate-100 rounded-lg text-sm font-semibold"
+              className="px-4 py-2 hotel-button-ghost text-sm font-semibold"
               onClick={() => setOpenEdit(false)}
             >
               Cancel
             </button>
-            <button className="px-4 py-2 bg-primary text-white rounded-lg text-sm font-semibold">
+            <button className="px-4 py-2 hotel-button text-sm font-semibold">
               Save
             </button>
           </>
         }
       >
-        <input className="w-full px-4 py-2 border border-slate-200 rounded-lg text-sm" placeholder="Guide name" />
-        <input className="w-full px-4 py-2 border border-slate-200 rounded-lg text-sm" placeholder="Languages" />
-        <select className="w-full px-4 py-2 border border-slate-200 rounded-lg text-sm">
+        <input className="w-full hotel-input text-sm" placeholder="Guide name" />
+        <input className="w-full hotel-input text-sm" placeholder="Languages" />
+        <select className="w-full hotel-input text-sm">
           <option>Status: Available</option>
           <option>Status: On Tour</option>
           <option>Status: Off Duty</option>

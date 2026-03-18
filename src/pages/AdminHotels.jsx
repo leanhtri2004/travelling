@@ -24,6 +24,18 @@ export default function AdminHotels() {
           </button>
         }
       />
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {[
+          { label: "Active Hotels", value: "210" },
+          { label: "Pending Approval", value: "18" },
+          { label: "Locked Accounts", value: "5" },
+        ].map((stat) => (
+          <div key={stat.label} className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+            <p className="text-xs text-slate-500 uppercase">{stat.label}</p>
+            <p className="text-2xl font-bold mt-2">{stat.value}</p>
+          </div>
+        ))}
+      </div>
       <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden fade-in-up">
         <table className="w-full text-sm">
           <thead className="bg-slate-50 text-slate-500">

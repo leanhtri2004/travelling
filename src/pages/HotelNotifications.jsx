@@ -5,7 +5,7 @@ export default function HotelNotifications() {
   return (
     <HotelLayout>
       <PageHeader title="Notifications" subtitle="Operational alerts and updates." />
-      <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-3">
+      <div className="hotel-card p-6 space-y-3">
         {[
           "New booking request from Anna Nguyen.",
           "Low inventory warning for Family Suite.",

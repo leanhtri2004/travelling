@@ -28,10 +28,7 @@ export default function HotelRooms() {
           { name: "Deluxe Ocean View", price: "$150/night", status: "3 Available" },
           { name: "Family Suite", price: "$250/night", status: "1 Left" },
         ].map((room) => (
-          <div
-            key={room.name}
-            className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden hover:-translate-y-1 hover:shadow-md transition-all fade-in-up"
-          >
+          <div key={room.name} className="hotel-card overflow-hidden hotel-card-hover">
             <div className="h-40 bg-slate-100">
               <img
                 className="h-full w-full object-cover"
@@ -47,7 +44,7 @@ export default function HotelRooms() {
               <span className={statusClass(room.status)}>{room.status}</span>
               <div className="flex items-center gap-3">
                 <button
-                  className="flex-1 bg-primary text-white text-sm font-semibold h-10 px-4 rounded-lg"
+                  className="flex-1 hotel-button text-sm font-semibold h-10 px-4"
                   onClick={() => {
                     setSelectedRoom(room.name);
                     setOpenEdit(true);
@@ -55,7 +52,7 @@ export default function HotelRooms() {
                 >
                   Edit Room
                 </button>
-                <button className="bg-slate-100 text-slate-700 text-sm font-semibold h-10 px-4 rounded-lg">
+                <button className="hotel-button-ghost text-sm font-semibold h-10 px-4">
                   Manage Inventory
                 </button>
               </div>
@@ -71,22 +68,22 @@ export default function HotelRooms() {
         actions={
           <>
             <button
-              className="px-4 py-2 bg-slate-100 rounded-lg text-sm font-semibold"
+              className="px-4 py-2 hotel-button-ghost text-sm font-semibold"
               onClick={() => setOpenEdit(false)}
             >
               Cancel
             </button>
-            <button className="px-4 py-2 bg-primary text-white rounded-lg text-sm font-semibold">
+            <button className="px-4 py-2 hotel-button text-sm font-semibold">
               Save
             </button>
           </>
         }
       >
-        <input className="w-full px-4 py-2 border border-slate-200 rounded-lg text-sm" placeholder="Room name" />
-        <input className="w-full px-4 py-2 border border-slate-200 rounded-lg text-sm" placeholder="Price per night" />
-        <input className="w-full px-4 py-2 border border-slate-200 rounded-lg text-sm" placeholder="Capacity" />
+        <input className="w-full hotel-input text-sm" placeholder="Room name" />
+        <input className="w-full hotel-input text-sm" placeholder="Price per night" />
+        <input className="w-full hotel-input text-sm" placeholder="Capacity" />
         <textarea
-          className="w-full px-4 py-2 border border-slate-200 rounded-lg text-sm min-h-[100px]"
+          className="w-full hotel-input text-sm min-h-[100px]"
           placeholder="Description"
         />
       </Dialog>
@@ -98,22 +95,22 @@ export default function HotelRooms() {
         actions={
           <>
             <button
-              className="px-4 py-2 bg-slate-100 rounded-lg text-sm font-semibold"
+              className="px-4 py-2 hotel-button-ghost text-sm font-semibold"
               onClick={() => setOpenCreate(false)}
             >
               Cancel
             </button>
-            <button className="px-4 py-2 bg-primary text-white rounded-lg text-sm font-semibold">
+            <button className="px-4 py-2 hotel-button text-sm font-semibold">
               Save
             </button>
           </>
         }
       >
-        <input className="w-full px-4 py-2 border border-slate-200 rounded-lg text-sm" placeholder="Room name" />
-        <input className="w-full px-4 py-2 border border-slate-200 rounded-lg text-sm" placeholder="Price per night" />
-        <input className="w-full px-4 py-2 border border-slate-200 rounded-lg text-sm" placeholder="Capacity" />
+        <input className="w-full hotel-input text-sm" placeholder="Room name" />
+        <input className="w-full hotel-input text-sm" placeholder="Price per night" />
+        <input className="w-full hotel-input text-sm" placeholder="Capacity" />
         <textarea
-          className="w-full px-4 py-2 border border-slate-200 rounded-lg text-sm min-h-[100px]"
+          className="w-full hotel-input text-sm min-h-[100px]"
           placeholder="Description"
         />
       </Dialog>

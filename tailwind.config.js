@@ -15,19 +15,19 @@ export default {
     extend: {
       colors: {
         brand: {
-          DEFAULT: "#0da6f2",
-          light: "#e6f6fe",
-          dark: "#0a84c1",
+          DEFAULT: "#00A9C9",
+          light: "#E6FBFF",
+          dark: "#0086A3",
         },
         accent: {
-          sun: "#F59E0B",
-          ocean: "#0ea5e9",
-          sand: "#FDFCF7",
+          sun: "#FF8A3D",
+          ocean: "#1B6FE6",
+          sand: "#FFF6EC",
         },
         primary: "#0da6f2",
-        "accent-warm": "#f59e0b",
-        "background-light": "#f5f7f8",
-        "background-dark": "#101c22",
+        "accent-warm": "#FF8A3D",
+        "background-light": "#F4FBFF",
+        "background-dark": "#0B1C24",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -47,9 +47,9 @@ export default {
         },
       },
       fontFamily: {
-        display: ["Inter", "sans-serif"],
-        sans: ["Inter", "sans-serif"],
-        serif: ["Playfair Display", "serif"],
+        display: ["Manrope", "sans-serif"],
+        sans: ["Manrope", "sans-serif"],
+        serif: ["Cormorant Garamond", "serif"],
       },
       borderRadius: {
         custom: "8px",

@@ -6,7 +6,7 @@ export default function HotelPricing() {
     <HotelLayout>
       <PageHeader title="Pricing & Promotions" subtitle="Manage seasonal rates and discounts." />
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+        <div className="hotel-card p-6">
           <h3 className="text-lg font-bold mb-3">Seasonal Pricing</h3>
           <div className="space-y-3">
             <div className="flex items-center justify-between">
@@ -19,10 +19,10 @@ export default function HotelPricing() {
             </div>
           </div>
         </div>
-        <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+        <div className="hotel-card p-6">
           <h3 className="text-lg font-bold mb-3">Active Promotions</h3>
           <p className="text-sm text-slate-500">10% early booking discount</p>
-          <button className="mt-4 px-4 py-2 bg-primary text-white rounded-lg text-sm font-semibold">
+          <button className="mt-4 px-4 py-2 hotel-button text-sm font-semibold">
             Create Promo
           </button>
         </div>

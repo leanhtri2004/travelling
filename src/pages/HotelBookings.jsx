@@ -10,9 +10,9 @@ export default function HotelBookings() {
   return (
     <HotelLayout>
       <PageHeader title="Bookings" subtitle="Manage guest reservations and status." />
-      <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+      <div className="hotel-card overflow-hidden">
         <table className="w-full text-sm">
-          <thead className="bg-slate-50 text-slate-500">
+          <thead className="bg-slate-50/80 text-slate-500">
             <tr>
               <th className="text-left p-4 font-semibold">Guest</th>
               <th className="text-left p-4 font-semibold">Dates</th>

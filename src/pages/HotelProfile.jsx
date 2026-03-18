@@ -5,11 +5,11 @@ export default function HotelProfile() {
   return (
     <HotelLayout>
       <PageHeader title="Hotel Profile" subtitle="Update property details and amenities." />
-      <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-4 max-w-3xl">
-        <input className="w-full px-4 py-2 border border-slate-200 rounded-lg text-sm" placeholder="Hotel Name" />
-        <input className="w-full px-4 py-2 border border-slate-200 rounded-lg text-sm" placeholder="Address" />
+      <div className="hotel-card p-6 space-y-4 max-w-3xl">
+        <input className="w-full hotel-input text-sm" placeholder="Hotel Name" />
+        <input className="w-full hotel-input text-sm" placeholder="Address" />
         <textarea
-          className="w-full px-4 py-2 border border-slate-200 rounded-lg text-sm min-h-[120px]"
+          className="w-full hotel-input text-sm min-h-[120px]"
           placeholder="Description"
         />
         <div className="flex flex-wrap gap-2">
@@ -22,7 +22,7 @@ export default function HotelProfile() {
             </span>
           ))}
         </div>
-        <button className="px-4 py-2 bg-primary text-white rounded-lg text-sm font-semibold">
+        <button className="px-4 py-2 hotel-button text-sm font-semibold">
           Save Changes
         </button>
       </div>
