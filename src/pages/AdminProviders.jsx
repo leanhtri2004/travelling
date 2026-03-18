@@ -8,7 +8,7 @@ export default function AdminProviders() {
   };
   return (
     <AdminLayout>
-      <PageHeader title="Providers" subtitle="Hotels, transport, and hotel-managed tours." />
+      <PageHeader title="Providers" subtitle="Hotels and hotel-managed tours in one directory." />
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {[
           { label: "Active Providers", value: "1,230" },

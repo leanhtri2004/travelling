@@ -3,15 +3,35 @@ import PageHeader from "../components/PageHeader.jsx";
 import { hotels } from "../data/hotels.js";
 
 export default function TravelerTours() {
-  const tours = hotels.flatMap((hotel) =>
-    hotel.tours.map((tour) => ({ ...tour, hotel: hotel.name }))
-  );
+  const bookedHotelId = hotels[0]?.id;
+  const bookedHotel = hotels.find((hotel) => hotel.id === bookedHotelId);
+  const tours = bookedHotel
+    ? bookedHotel.tours.map((tour) => ({ ...tour, hotel: bookedHotel.name }))
+    : [];
   return (
     <TravelerLayout>
       <PageHeader
         title="Hotel Tours"
         subtitle="Browse tours managed by your hotel and bundled services."
       />
+      <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+        {bookedHotel ? (
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <p className="text-xs text-slate-500 uppercase">Booked Hotel</p>
+              <p className="text-lg font-bold">{bookedHotel.name}</p>
+              <p className="text-sm text-slate-500">{bookedHotel.location}</p>
+            </div>
+            <span className="px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-xs font-semibold">
+              Active booking
+            </span>
+          </div>
+        ) : (
+          <div className="rounded-xl border border-slate-200 p-4 bg-slate-50/70 text-sm text-slate-600">
+            Please book a hotel first to see tours managed by that hotel.
+          </div>
+        )}
+      </div>
       <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_2.1fr] gap-6">
         <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-4">
           <h3 className="text-lg font-bold">Tour Filters</h3>
@@ -27,7 +47,8 @@ export default function TravelerTours() {
           </button>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {tours.map((tour) => (
+        {tours.length ? (
+          tours.map((tour) => (
           <div
             key={tour.name}
             className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:-translate-y-1 hover:shadow-md transition-all fade-in-up"
@@ -66,7 +87,12 @@ export default function TravelerTours() {
               </button>
             </div>
           </div>
-        ))}
+        ))
+        ) : (
+          <div className="col-span-full bg-white p-6 rounded-xl border border-slate-200 shadow-sm text-sm text-slate-600">
+            No tours available. Select a booked hotel to see its tours.
+          </div>
+        )}
       </div>
       </div>
     </TravelerLayout>

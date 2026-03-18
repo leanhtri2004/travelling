@@ -3,19 +3,14 @@ import { NavLink } from "react-router-dom";
 const navItems = [
   { label: "Dashboard", icon: "dashboard", to: "/traveler" },
   { label: "AI Plan", icon: "temp_preferences_custom", to: "/traveler/ai-plan" },
-  { label: "Trips", icon: "flight_takeoff", to: "/traveler/trips" },
   { label: "Itinerary", icon: "calendar_month", to: "/traveler/itinerary" },
   { label: "Bookings", icon: "confirmation_number", to: "/traveler/bookings" },
   { label: "Hotels", icon: "hotel", to: "/traveler/hotels" },
-  { label: "Transport", icon: "directions_car", to: "/traveler/transport" },
   { label: "Hotel Tours", icon: "map", to: "/traveler/tours" },
   { label: "Food", icon: "restaurant", to: "/traveler/food" },
-  { label: "Food Booking", icon: "restaurant_menu", to: "/traveler/food-booking" },
   { label: "Map", icon: "location_on", to: "/traveler/map" },
   { label: "Payments", icon: "payments", to: "/traveler/payments" },
   { label: "Reviews", icon: "star", to: "/traveler/reviews" },
-  { label: "Profile", icon: "person", to: "/traveler/profile" },
-  { label: "Notifications", icon: "notifications", to: "/traveler/notifications" },
   { label: "Support", icon: "support", to: "/traveler/support" },
 ];
 
@@ -88,9 +83,33 @@ export default function TravelerLayout({ children }) {
             </div>
           </div>
           <div className="flex items-center gap-3">
-            <button className="p-2 hover:bg-slate-100 rounded-lg transition-colors text-slate-600">
+            <NavLink
+              to="/traveler/notifications"
+              className={({ isActive }) =>
+                `p-2 rounded-lg transition-colors ${
+                  isActive ? "text-primary bg-primary/10" : "text-slate-600 hover:bg-slate-100"
+                }`
+              }
+            >
               <span className="material-symbols-outlined">notifications</span>
-            </button>
+            </NavLink>
+            <NavLink
+              to="/traveler/profile"
+              className={({ isActive }) =>
+                `flex items-center gap-2 rounded-full border px-2 py-1 transition-colors ${
+                  isActive ? "border-primary bg-primary/10" : "border-transparent hover:bg-slate-100"
+                }`
+              }
+            >
+              <div className="size-8 rounded-full bg-slate-200 overflow-hidden">
+                <img
+                  className="w-full h-full object-cover"
+                  alt="Traveler profile"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKmU6dftLGKeGIEnRrmWKpwjGqZzTYEuMlsZxzkB3WP-C585VtK3uNDejE0MkCwdmt99MTaA0Ws1403MERG4udkzAHF8dEFp3yBCht9U-FFE2ZLMrP8ocnp4zGfWmKGzT44GeTMU_0-scAfR2qdpUamxF9D3ZQCn1MmhsuUzPoa8MLYkEBJxg1UkKhj9inw2rMqvPxJWkaOR9YhmwoDab3HCrBkW6TBdYyh_uXqV1ilXmeeTEULPvLhPLA6MikHJsXg3xXxIQNcreF"
+                />
+              </div>
+              <span className="hidden lg:inline text-sm font-semibold text-slate-700">Profile</span>
+            </NavLink>
             <button className="flex items-center gap-1 px-3 py-1.5 hover:bg-slate-100 rounded-lg transition-colors text-sm font-bold text-slate-600">
               <span className="material-symbols-outlined text-lg">payments</span>
               USD

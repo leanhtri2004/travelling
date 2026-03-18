@@ -6,6 +6,32 @@ export const hotels = [
     rating: "4.8",
     location: "Da Nang",
     amenities: ["Pool", "Spa", "Breakfast", "Airport Shuttle"],
+    foodServices: [
+      {
+        name: "Ocean Blue Breakfast Buffet",
+        category: "Breakfast",
+        price: "$12/person",
+        availability: "Daily 6:00 AM - 10:00 AM",
+        rating: "4.7",
+        tags: ["buffet", "local", "fresh"],
+      },
+      {
+        name: "Sea Breeze Seafood Set",
+        category: "Dinner",
+        price: "$28/person",
+        availability: "Daily 5:30 PM - 10:00 PM",
+        rating: "4.8",
+        tags: ["seafood", "chef-signature"],
+      },
+      {
+        name: "Sunset BBQ Terrace",
+        category: "Experience",
+        price: "$35/person",
+        availability: "Fri-Sun 6:00 PM - 9:30 PM",
+        rating: "4.6",
+        tags: ["bbq", "outdoor"],
+      },
+    ],
     tours: [
       {
         name: "Hoi An Lantern Night Tour",
@@ -40,6 +66,32 @@ export const hotels = [
     rating: "4.6",
     location: "Ha Noi",
     amenities: ["Gym", "City View", "Breakfast", "Concierge"],
+    foodServices: [
+      {
+        name: "Hanoi Heritage Breakfast",
+        category: "Breakfast",
+        price: "$10/person",
+        availability: "Daily 6:30 AM - 9:30 AM",
+        rating: "4.6",
+        tags: ["pho", "local"],
+      },
+      {
+        name: "Old Quarter Street Food Tour",
+        category: "Experience",
+        price: "$22/person",
+        availability: "Daily 4:00 PM - 7:00 PM",
+        rating: "4.7",
+        tags: ["tour", "tasting"],
+      },
+      {
+        name: "Skyline Afternoon Tea",
+        category: "Tea",
+        price: "$18/person",
+        availability: "Daily 2:00 PM - 5:30 PM",
+        rating: "4.5",
+        tags: ["dessert", "tea"],
+      },
+    ],
     tours: [
       {
         name: "Old Quarter Walk",
@@ -74,6 +126,32 @@ export const hotels = [
     rating: "4.7",
     location: "Hoi An",
     amenities: ["Riverside Cafe", "Bikes", "Breakfast", "Airport Shuttle"],
+    foodServices: [
+      {
+        name: "Riverside Breakfast Set",
+        category: "Breakfast",
+        price: "$9/person",
+        availability: "Daily 6:00 AM - 10:00 AM",
+        rating: "4.7",
+        tags: ["local", "coffee"],
+      },
+      {
+        name: "Hoi An Lantern Dinner",
+        category: "Dinner",
+        price: "$24/person",
+        availability: "Daily 6:00 PM - 9:30 PM",
+        rating: "4.8",
+        tags: ["romantic", "local"],
+      },
+      {
+        name: "Vegan Garden Bento",
+        category: "Lunch",
+        price: "$14/person",
+        availability: "Daily 11:00 AM - 2:00 PM",
+        rating: "4.6",
+        tags: ["vegan", "healthy"],
+      },
+    ],
     tours: [
       {
         name: "Hoi An Sunrise Bike Tour",

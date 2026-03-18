@@ -109,7 +109,7 @@ export default function Home() {
                   items: [
                     { title: "Tell Us Your Style", sub: "Budget, vibe, pace, must-sees", target: "how-it-works" },
                     { title: "AI Orchestration", sub: "Optimize time, routes, and flows", target: "how-it-works" },
-                    { title: "Confirm & Go", sub: "Book stays, tours, and transport", target: "how-it-works" },
+                    { title: "Confirm & Go", sub: "Book stays and tours in one flow", target: "how-it-works" },
                   ],
                   image:
                     "https://lh3.googleusercontent.com/aida-public/AB6AXuCM-MHR6WvZVNr2R5VeVa6Fx4I9R-m65idYgKq5spPS2a3iKlCey16FqCiXz4mQQe4QZGLHZuqJuSSXxiBCf6cho74DID_bRqvzmktD7KGBL3vHRHxnzfW76_BSF7MBxSWfwL1-FhjLe66nqInsGkUGAFrlCLLSr1Uar0hK08mpkxVt-PgrdBpe_1g1AK1FbriR7ADNUrv4vjs7ODHzSv5q3KSAp906KDuF7MK2CEFvtyp17-cmYjb3nysavzMnX5pIsbvecs5MEeu5",

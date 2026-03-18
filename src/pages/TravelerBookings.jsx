@@ -10,7 +10,7 @@ export default function TravelerBookings() {
   };
   return (
     <TravelerLayout>
-      <PageHeader title="Bookings" subtitle="Track all your hotel, tour, and transport reservations." />
+      <PageHeader title="Bookings" subtitle="Track all your hotel and tour reservations in one place." />
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {[
           { label: "Active Bookings", value: "5", icon: "event_available" },

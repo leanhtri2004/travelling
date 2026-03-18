@@ -7,6 +7,8 @@ import { hotels } from "../data/hotels.js";
 export default function TravelerHotelDetails() {
   const { hotelId } = useParams();
   const hotel = hotels.find((item) => item.id === hotelId) || hotels[0];
+  const bookedHotelId = hotels[0]?.id;
+  const isBooked = hotel.id === bookedHotelId;
   const roomOptions = [
     { name: "Deluxe Ocean View", price: 150 },
     { name: "Family Suite", price: 240 },
@@ -161,6 +163,32 @@ export default function TravelerHotelDetails() {
                 </div>
               ))}
             </div>
+          </div>
+
+          <div>
+            <h4 className="text-lg font-bold mb-3">Hotel Food Picks</h4>
+            {isBooked ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {(hotel.foodServices || [
+                  { name: "Sunrise Pho Bar", highlight: "Late-night pho & broth flights" },
+                  { name: "Lagoon Seafood Grill", highlight: "Chef’s catch, oceanfront tables" },
+                  { name: "Lantern Tea House", highlight: "Afternoon tea + local desserts" },
+                  { name: "Garden Bento Lab", highlight: "Healthy bowls, vegan friendly" },
+                ]).map((food) => (
+                  <div key={food.name} className="p-4 rounded-xl bg-white border border-slate-200">
+                    <p className="text-sm font-semibold">{food.name}</p>
+                    <p className="text-xs text-slate-500 mt-1">
+                      {food.highlight || `${food.category} • ${food.availability}`}
+                    </p>
+                    <button className="mt-3 text-primary text-xs font-bold">Reserve Table</button>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="rounded-xl border border-slate-200 bg-slate-50/70 p-4 text-sm text-slate-600">
+                Food recommendations unlock after you complete the hotel booking.
+              </div>
+            )}
           </div>
         </div>
 

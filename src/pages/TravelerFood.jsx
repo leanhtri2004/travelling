@@ -1,10 +1,43 @@
 import TravelerLayout from "../layouts/TravelerLayout.jsx";
 import PageHeader from "../components/PageHeader.jsx";
+import { hotels } from "../data/hotels.js";
 
 export default function TravelerFood() {
+  const bookedHotelId = hotels[0]?.id;
+  const bookedHotel = hotels.find((hotel) => hotel.id === bookedHotelId);
+  const fallbackFood = [
+    { name: "Mi Quang", place: "Ba Mua", price: "$4-8", rating: "4.8" },
+    { name: "Banh Xeo", place: "76 Street", price: "$3-6", rating: "4.7" },
+    { name: "Seafood Platter", place: "My Khe", price: "$15-25", rating: "4.6" },
+    { name: "Banh Mi Queen", place: "Old Quarter", price: "$2-5", rating: "4.9" },
+  ];
+  const foodItems = bookedHotel?.foodServices?.map((item) => ({
+    name: item.name,
+    place: item.category,
+    price: item.price,
+    rating: item.rating,
+  })) || fallbackFood;
   return (
     <TravelerLayout>
       <PageHeader title="Food Recommendations" subtitle="Local specialties and top-rated restaurants." />
+      <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+        {bookedHotel ? (
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <p className="text-xs text-slate-500 uppercase">Booked Hotel</p>
+              <p className="text-lg font-bold">{bookedHotel.name}</p>
+              <p className="text-sm text-slate-500">{bookedHotel.location}</p>
+            </div>
+            <span className="px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-xs font-semibold">
+              Active booking
+            </span>
+          </div>
+        ) : (
+          <div className="rounded-xl border border-slate-200 p-4 bg-slate-50/70 text-sm text-slate-600">
+            Please book a hotel first to see curated food nearby.
+          </div>
+        )}
+      </div>
       <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_2.1fr] gap-6">
         <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-4">
           <h3 className="text-lg font-bold">Taste Preferences</h3>
@@ -20,12 +53,7 @@ export default function TravelerFood() {
           </button>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {[
-            { name: "Mi Quang", place: "Ba Mua", price: "$4-8", rating: "4.8" },
-            { name: "Banh Xeo", place: "76 Street", price: "$3-6", rating: "4.7" },
-            { name: "Seafood Platter", place: "My Khe", price: "$15-25", rating: "4.6" },
-            { name: "Banh Mi Queen", place: "Old Quarter", price: "$2-5", rating: "4.9" },
-          ].map((food) => (
+          {bookedHotel ? foodItems.map((food) => (
             <div key={food.name} className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
               <div className="h-32 rounded-xl bg-slate-100 mb-3 overflow-hidden">
                 <img
@@ -52,7 +80,11 @@ export default function TravelerFood() {
                 </button>
               </div>
             </div>
-          ))}
+          )) : (
+            <div className="col-span-full bg-white p-6 rounded-xl border border-slate-200 shadow-sm text-sm text-slate-600">
+              Food recommendations are available after you book a hotel.
+            </div>
+          )}
         </div>
       </div>
     </TravelerLayout>

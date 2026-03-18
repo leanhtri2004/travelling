@@ -10,6 +10,7 @@ export default function HotelLayout({ children }) {
     { label: "Rooms & Inventory", icon: "meeting_room", to: `/hotel/${hotel.id}/rooms` },
     { label: "Bookings", icon: "calendar_month", to: `/hotel/${hotel.id}/bookings` },
     { label: "Tour Management", icon: "tour", to: `/hotel/${hotel.id}/tours` },
+    { label: "Food Services", icon: "restaurant", to: `/hotel/${hotel.id}/food` },
     { label: "Guide Management", icon: "badge", to: `/hotel/${hotel.id}/guides` },
     { label: "Pricing & Promotions", icon: "sell", to: `/hotel/${hotel.id}/pricing` },
     { label: "Reviews", icon: "star", to: `/hotel/${hotel.id}/reviews` },

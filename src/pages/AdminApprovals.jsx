@@ -9,7 +9,7 @@ export default function AdminApprovals() {
         <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-4">
           <h3 className="text-lg font-bold">Approval Filters</h3>
           <div className="space-y-2 text-sm text-slate-600">
-            {["Hotels", "Tours", "Guides", "Transport"].map((tag) => (
+            {["Hotels", "Tours", "Guides"].map((tag) => (
               <label key={tag} className="flex items-center gap-2">
                 <input type="checkbox" /> {tag}
               </label>
